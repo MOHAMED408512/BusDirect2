@@ -7,228 +7,140 @@
   <!-- Tailwind CSS -->
   <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 </head>
-<body class="bg-gray-100 p-4">
+<body class="bg-red-100 p-8">
 
-  <!-- HEADER -->
-  <header class="bg-white border-b border-gray-200 py-4 px-6 shadow-sm">
-    <div class="max-w-6xl mx-auto flex justify-between items-center">
-      
-      <div class="flex items-center gap-3">
-        <img src="/photos/11eac2616f0c13d370dacbe829a93fd7-removebg-preview.png" alt="BusDirect Logo" class="h-8 w-auto">
-        <h1 class="text-xl font-bold text-blue-900">BusDirect</h1>
-      </div>
-
-      <nav class="flex items-center gap-6 text-sm font-medium">
-        <a href="#" class="text-blue-600 font-bold hover:underline">Réservation</a>
-        <div class="flex items-center gap-1">
-          <span>Tickets</span>
-          <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full font-semibold">3</span>
-        </div>
-        <button class="bg-blue-600 text-white px-3 py-1.5 rounded-lg hover:bg-blue-700 transition">
-          Mon Compte
-        </button>
-      </nav>
-
+  <!-- HEADER b grid -->
+<header class="bg-white p-5 mb-4 rounded-lg">
+  <div class="  grid grid-cols-2 ">
+    
+    <!-- word Busdirect f header grid-->
+     <div>
+      <h1 class="text-xl font-bold text-blue-900">BusDirect</h1>
     </div>
-  </header>
+    
+    <!--  word Reservation  grid-->
+    <nav class="justify-self-end"> <!--the word reservation to the right -->
+      <a href="#Réserver une place" class="text-blue-600 font-bold text-sm hover:underline">Réservation</a>
+    </nav>
 
-  <!-- TRAJET INFO -->
-  <section class="bg-white p-4 rounded-lg flex justify-between items-center mb-4">
+  </div>
+</header>
+
+
+
+
+
+
+
+
+  <!-- STATS & TRAJET -->
+  <section class="bg-white p-4 rounded-lg flex justify-between items-center mb-4 ">
     <div>
       <span class="font-bold">Safi ➔ Marrakech</span>
-      <span class="bg-blue-100 text-blue-600 px-2 py-1 rounded text-xs ml-2">80 DH</span>
+      <span class="bg-blue-100 text-blue-600 p-2 rounded text-xs ">80 DH</span>
     </div>
-    <div class="text-xs flex gap-3">
-      <span>⚪ Libre</span>
-      <span>🔴 Occupé</span>
+    <div class="text-xs flex gap-4 font-semibold">
+      <span>⚪ Libres: <strong id="available-count" class="text-blue-600">20</strong></span>
+      <span>🔴 Occupés: <strong id="occupied-count" class="text-red-600">0</strong></span>
+      <span>💰 Rossita: <strong id="revenue-count" class="text-green-600">0 DH</strong></span>
     </div>
   </section>
 
-  <!-- MAIN CONTENT (GRID) -->
-  <main class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-    <!-- LEFT BUS PLAN -->
+
+
+
+  <!-- MAIN CONTENT layout  seats w reservation b grid-->
+  <main class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+    <!-- LEFT: PLAN DU BUS (Les siège) -->
     <section class="bg-white p-4 rounded-lg">
-      <p class="text-sm font-bold text-gray-500 mb-3">20 places • 17 disponibles</p>
+      <h2 class="font-bold text-blue-500 mb-3">Plan du Bus (20 places)</h2>
       
-     <!-- Poste Conducteur -->
-          <div class="bg-white p-3 rounded-xl border border-gray-100 text-center font-bold text-gray-600 text-sm shadow-xs">
-             Poste Conducteur 
-          </div>
-
-
-        <!-- SEATS GRID  -->
-        <ol id="bus-seats" class="grid grid-cols-4 gap-4 text-center">
-  
-  <!-- Row 1 -->
-  <li class="bg-white border border-blue-100 rounded-2xl p-4 flex flex-col items-center justify-center shadow-sm">
-    <span class="text-blue-700 font-extrabold text-base">01</span>
-    <span class="text-gray-400 text-xs font-medium">Libre</span>
-  </li>
-  <li class="bg-white border border-blue-100 rounded-2xl p-4 flex flex-col items-center justify-center shadow-sm">
-    <span class="text-blue-700 font-extrabold text-base">02</span>
-    <span class="text-gray-400 text-xs font-medium">Libre</span>
-  </li>
-  <li class="bg-red-100 border border-red-200 rounded-2xl p-3 flex flex-col items-center justify-center gap-1 shadow-sm">
-    <span class="text-red-700 font-extrabold text-base">03</span>
-    <div class="bg-white text-gray-700 text-[11px] font-bold py-1 px-3 rounded-full w-full text-center border border-red-200">
-      👤 Lightning mqueen
-    </div>
-  </li>
-  <li class="bg-white border border-blue-100 rounded-2xl p-4 flex flex-col items-center justify-center shadow-sm">
-    <span class="text-blue-700 font-extrabold text-base">13</span>
-    <span class="text-gray-400 text-xs font-medium">Libre</span>
-  </li>
-  
-
-  <!-- Row 2 -->
-  <li class="bg-white border border-blue-100 rounded-2xl p-4 flex flex-col items-center justify-center shadow-sm">
-    <span class="text-blue-700 font-extrabold text-base">05</span>
-    <span class="text-gray-400 text-xs font-medium">Libre</span>
-  </li>
-  <li class="bg-white border border-blue-100 rounded-2xl p-4 flex flex-col items-center justify-center shadow-sm">
-    <span class="text-blue-700 font-extrabold text-base">06</span>
-    <span class="text-gray-400 text-xs font-medium">Libre</span>
-  </li>
-  <li class="bg-white border border-blue-100 rounded-2xl p-4 flex flex-col items-center justify-center shadow-sm">
-    <span class="text-blue-700 font-extrabold text-base">07</span>
-    <span class="text-gray-400 text-xs font-medium">Libre</span>
-  </li>
-  <li class="bg-white border border-blue-100 rounded-2xl p-4 flex flex-col items-center justify-center shadow-sm">
-    <span class="text-blue-700 font-extrabold text-base">08</span>
-    <span class="text-gray-400 text-xs font-medium">Libre</span>
-  </li>
-
-  <!-- Row 3 -->
-  <li class="bg-white border border-blue-100 rounded-2xl p-4 flex flex-col items-center justify-center shadow-sm">
-    <span class="text-blue-700 font-extrabold text-base">09</span>
-    <span class="text-gray-400 text-xs font-medium">Libre</span>
-  </li>
-  <li class="bg-white border border-blue-100 rounded-2xl p-4 flex flex-col items-center justify-center shadow-sm">
-    <span class="text-blue-700 font-extrabold text-base">10</span>
-    <span class="text-gray-400 text-xs font-medium">Libre</span>
-  </li>
-  <li class="bg-white border border-blue-100 rounded-2xl p-4 flex flex-col items-center justify-center shadow-sm">
-    <span class="text-blue-700 font-extrabold text-base">11</span>
-    <span class="text-gray-400 text-xs font-medium">Libre</span>
-  </li>
-  <li class="bg-white border border-blue-100 rounded-2xl p-4 flex flex-col items-center justify-center shadow-sm">
-    <span class="text-blue-700 font-extrabold text-base">12</span>
-    <span class="text-gray-400 text-xs font-medium">Libre</span>
-  </li>
-
-  <!-- Row 4 -->
-  <li class="bg-white border border-blue-100 rounded-2xl p-4 flex flex-col items-center justify-center shadow-sm">
-    <span class="text-blue-700 font-extrabold text-base">13</span>
-    <span class="text-gray-400 text-xs font-medium">Libre</span>
-  </li>
-  <li class="bg-white border border-blue-100 rounded-2xl p-4 flex flex-col items-center justify-center shadow-sm">
-    <span class="text-blue-700 font-extrabold text-base">14</span>
-    <span class="text-gray-400 text-xs font-medium">Libre</span>
-    </div>
-  </li>
-  <li class="bg-red-100 border border-red-200 rounded-2xl p-3 flex flex-col items-center justify-center gap-1 shadow-sm">
-    <span class="text-red-700 font-extrabold text-base">15</span>
-    <div class="bg-white text-gray-700 text-[11px] font-bold py-1 px-3 rounded-full w-full text-center border border-red-200">
-      👤 Jackson storm
-    </div>
-  </li>
-  <li class="bg-white border border-blue-100 rounded-2xl p-4 flex flex-col items-center justify-center shadow-sm">
-    <span class="text-blue-700 font-extrabold text-base">16</span>
-    <span class="text-gray-400 text-xs font-medium">Libre</span>
-  </li>
-
-  <!-- Row 5 -->
-  <li class="bg-white border border-blue-100 rounded-2xl p-4 flex flex-col items-center justify-center shadow-sm">
-    <span class="text-blue-700 font-extrabold text-base">17</span>
-    <span class="text-gray-400 text-xs font-medium">Libre</span>
-  </li>
-  <li class="bg-white border border-blue-100 rounded-2xl p-4 flex flex-col items-center justify-center shadow-sm">
-    <span class="text-blue-700 font-extrabold text-base">18</span>
-    <span class="text-gray-400 text-xs font-medium">Libre</span>
-  </li>
-  <li class="bg-white border border-blue-100 rounded-2xl p-4 flex flex-col items-center justify-center shadow-sm">
-    <span class="text-blue-700 font-extrabold text-base">19</span>
-    <span class="text-gray-400 text-xs font-medium">Libre</span>
-  </li>
-  <li class="bg-white border border-blue-100 rounded-2xl p-4 flex flex-col items-center justify-center shadow-sm">
-    <span class="text-blue-700 font-extrabold text-base">20</span>
-    <span class="text-gray-400 text-xs font-medium">Libre</span>
-  </li>
-
-</ol>
-      </div>
+      <ol id="bus-seats" class="grid grid-cols-4 gap-2 text-center text-xs font-bold">
+        <li id="siege-1" class="bg-white border p-3 rounded"><span>01</span><br>Libre</li>
+        <li id="siege-2" class="bg-white border p-3 rounded"><span>02</span><br>Libre</li>
+        <li id="siege-3" class="bg-white border p-3 rounded"><span>03</span><br>Libre</li>
+        <li id="siege-4" class="bg-white border p-3 rounded"><span>04</span><br>Libre</li>
+        <li id="siege-5" class="bg-white border p-3 rounded"><span>05</span><br>Libre</li>
+        <li id="siege-6" class="bg-white border p-3 rounded"><span>06</span><br>Libre</li>
+        <li id="siege-7" class="bg-white border p-3 rounded"><span>07</span><br>Libre</li>
+        <li id="siege-8" class="bg-white border p-3 rounded"><span>08</span><br>Libre</li>
+        <li id="siege-9" class="bg-white border p-3 rounded"><span>09</span><br>Libre</li>
+        <li id="siege-10" class="bg-white border p-3 rounded"><span>10</span><br>Libre</li>
+        <li id="siege-11" class="bg-white border p-3 rounded"><span>11</span><br>Libre</li>
+        <li id="siege-12" class="bg-white border p-3 rounded"><span>12</span><br>Libre</li>
+        <li id="siege-13" class="bg-white border p-3 rounded"><span>13</span><br>Libre</li>
+        <li id="siege-14" class="bg-white border p-3 rounded"><span>14</span><br>Libre</li>
+        <li id="siege-15" class="bg-white border p-3 rounded"><span>15</span><br>Libre</li>
+        <li id="siege-16" class="bg-white border p-3 rounded"><span>16</span><br>Libre</li>
+        <li id="siege-17" class="bg-white border p-3 rounded"><span>17</span><br>Libre</li>
+        <li id="siege-18" class="bg-white border p-3 rounded"><span>18</span><br>Libre</li>
+        <li id="siege-19" class="bg-white border p-3 rounded"><span>19</span><br>Libre</li>
+        <li id="siege-20" class="bg-white border p-3 rounded"><span>20</span><br>Libre</li>
+      </ol>
     </section>
 
-    <!-- RIGHT FORMS -->
-    <section class="space-y-4">
+    <!-- RIGHT: FORMULAIRES -->
+    <section class>
       
-
-
-
-      
-      <!-- FORM 1 Réserver une place -->
-
-
-      <form class="bg-white p-4 rounded-lg space-y-2">
-        <h2 class="font-bold text-sm">Reserver une place</h2>
-        <input type="text" placeholder="Passager / Ex : Jackson storm" class="w-full bg-gray-100 p-2 rounded text-xs">
-        
-        
-        <input type="text" placeholder="--Siege selectionee--" class="w-full bg-gray-100 p-2 rounded text-xs">
-        
-
-        <button type="button" class="w-full bg-blue-600 text-white p-2 rounded text-xs font-bold">Confirmer</button>
+      <!-- 1. RESERVATION -->
+    <section id = "Réserver une place" ></section>
+      <form class="bg-white p-4 rounded-lg mb-4">
+        <h2 class="font-bold text-sm text-blue-900">Réserver une place</h2>
+        <div id="msg-res" class="hidden p-2 rounded text-xs font-semibold text-center border"></div>
+        <div>
+          <label class="text-xs text-gray-600 block mb-1">Nom du passager</label>
+          <input id="res-nom" type="text" placeholder="Ex : Jackson storm" class="w-full bg-gray-100 p-2 rounded text-xs border border-gray-200">
+        </div>
+        <div>
+          <label class="text-xs text-gray-600 block mb-1">Numéro de siège</label>
+          <select id="res-siege" class="w-full bg-gray-100 p-2 mb-4 rounded text-xs cursor-pointer border border-gray-200"></select>
+        </div>
+        <button type="button" id="btn-reserver" class="w-full bg-blue-600 text-white p-2 rounded text-xs font-bold hover:bg-blue-700 transition cursor-pointer">
+          Confirmer Réservation
+        </button>
       </form>
 
-      <!-- FORM 2: Modifier une place -->
-      <form class="bg-white p-4 rounded-lg space-y-2">
-        <h2 class="font-bold text-sm">Modifier une place</h2>
-        
-        
-          <input type="text" placeholder="Passager / Ex : Jackson storm" class="w-full bg-gray-100 p-2 rounded text-xs">
-        
-        
-
-        <input type="text" placeholder="Modifier le nom" class="w-full bg-gray-100 p-2 rounded text-xs">
-        
-
-
-        
-          <input type="text" placeholder="-- Choisir nouveau siege --" class="w-full bg-gray-100 p-2 rounded text-xs">
-        
-        
-
-        <button type="button" class="w-full bg-blue-100 text-blue-600 p-2 rounded text-xs font-bold">Modifier</button>
+      <!-- 2. MODIFICATION -->
+      <form class="bg-white p-4 rounded-lg mb-4">
+        <h2 class="font-bold text-sm text-amber-600">Modifier une place</h2>
+        <div id="msg-mod" class="hidden p-2 rounded text-xs font-semibold text-center border"></div>
+        <div>
+          <label class="text-xs text-gray-600 block mb-1">Choisir le passager</label>
+          <select id="mod-passager" class="w-full bg-gray-100 p-2 rounded text-xs cursor-pointer border border-gray-200"></select>
+        </div>
+        <div>
+          <label class="text-xs text-gray-600 block mb-1">Nouveau nom du passager</label>
+          <input id="mod-nom" type="text" placeholder="Nouveau nom" class="w-full bg-gray-100 p-2 rounded text-xs border border-gray-200">
+        </div>
+        <div>
+          <label class="text-xs text-gray-600 block mb-1">Changer de siège (Optionnel)</label>
+          <select id="mod-siege" class="w-full bg-gray-100 p-2 mb-4 rounded text-xs cursor-pointer border border-gray-200"></select>
+        </div>
+        <button type="button" id="btn-modifier" class="w-full bg-amber-600 text-white p-2 rounded text-xs font-bold hover:bg-amber-700  transition cursor-pointer ">
+          Modifier
+        </button>
       </form>
 
-
-
-
-
-      <!-- FORM 3: Supprimer une réservation -->
-      <form class="bg-white p-4 rounded-lg space-y-2">
-        <h2 class="font-bold text-sm">Supprimer une réservation</h2>
-        
-        <input type="text" placeholder="Choisir passager" class="w-full bg-gray-100 p-2 rounded text-xs">
-        
-        
-
-        <button type="button" class="w-full bg-red-100 text-red-600 p-2 rounded text-xs font-bold">Supprimer</button>
+      <!-- 3. SUPPRESSION -->
+      <form class="bg-white p-4 rounded-lg">
+        <h2 class="font-bold text-sm text-red-600 mb-1">Supprimer une place</h2>
+        <div id="msg-supp" class="hidden p-2 rounded text-xs font-semibold text-center border"></div>
+        <div>
+          <label class="text-xs text-gray-600 block mb-3  ">Choisir le passager à supprimer</label>
+          <select id="sup-siege" class="w-full bg-gray-100 p-2 mb-4 rounded text-xs cursor-pointer border border-gray-200"></select>
+        </div>
+        <button type="button" id="btn-supprimer" class="w-full bg-red-600 text-white p-2 rounded text-xs font-bold hover:bg-red-700 transition cursor-pointer">
+          Supprimer
+        </button>
       </form>
 
     </section>
 
   </main>
-  
-  
-<!-- 4. FOOTER -->
-  <footer class="text-center py-4 text-xs font-semibold text-gray-400 border-t border-gray-100 bg-white">
-    © 2026 <span class="text-blue-700 font-bold">BusDirect</span>
-  </footer>
 
-  <!-- Link your JavaScript file -->
-
-  <script src="script.js"></script>
+  <!-- Link JavaScript -->
+  <script src="Bus.js"></script>
 </body>
 </html>
