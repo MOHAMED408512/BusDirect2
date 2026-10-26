@@ -217,6 +217,4 @@ btnSupprimer.addEventListener("click", function () {
     }
      
 
-    // find the position of reservations in the array
-
-   let position = reservations.findIndex(r => r.siege === siegeASupprimer);
+    
