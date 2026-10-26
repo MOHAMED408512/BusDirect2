@@ -63,12 +63,12 @@ function sauvegarder() {
     localStorage.setItem(CLE_STORAGE, JSON.stringify(reservations));
 }
 
-// 2. Trouver par siège (find dyal JavaScript)
+// Trouver par siège (find dyal JavaScript)
 function trouverParSiege(num) {
     return reservations.find(r => r.siege === Number(num)) || null;
 }
 
-// 3. Premier libre (loop )
+//  Premier libre (loop )
 function premierLibre() {
     for (let i = 1; i <= NOMBRE_DE_SIEGES; i++) {
         if (!trouverParSiege(i)) return i;
@@ -77,7 +77,7 @@ function premierLibre() {
 }
 
 function actualiser() {
-    // 1. T-modifier 20 seats with color
+    // modifier 20 seats with color
     for (let i = 1; i <= NOMBRE_DE_SIEGES; i++) {
         let li = document.getElementById("siege-" + i);
         let r = trouverParSiege(i);
@@ -91,3 +91,11 @@ function actualiser() {
         }
     } 
 }
+        // Calculate stats and total revenue
+    let occupes = reservations.length;
+    availableCount.textContent = NOMBRE_DE_SIEGES - occupes;
+    occupiedCount.textContent = occupes;
+    revenueCount.textContent = (occupes * PRIX) + " DH";
+
+   
+    
