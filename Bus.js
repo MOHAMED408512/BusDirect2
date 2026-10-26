@@ -131,6 +131,14 @@ btnReserver.addEventListener("click",function(){
     return
    } 
      
+
+   // check if the bus is full 
+if(siege===null){
+    afficherMessage(msgRes, " le Bus est full get out !!! ", true)
+    return
+}
+
+
    // add reservation to the array 
    reservations.push({nom: nom, siege :siege })
 
@@ -144,4 +152,7 @@ actualiser()
 resNom.value = ""
 afficherMessage(msgRes, "Reservation effectuee en succes!")
 })
+  
+// 
 
+actualiser()
