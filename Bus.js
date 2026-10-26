@@ -94,4 +94,12 @@ function actualiser() {
     modSiege.innerHTML = '<option value="">-- Même siège --</option>';
     supSiege.innerHTML = '<option value="">-- Choisir un passager --</option>';
 
+    // 4 Add available seats to select lists using estLibre
+    for (let i = 1; i <= NOMBRE_DE_SIEGES; i++) {
+        if (estLibre(i)) {
+            resSiege.add(new Option("Siège " + i, i));
+            modSiege.add(new Option("Siège " + i, i));
+        }
+    }
+
     
