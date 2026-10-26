@@ -130,7 +130,9 @@ btnReserver.addEventListener("click",function(){
     afficherMessage(msgRes , " Veuillez choisir un siege !" , true)
     return
    } 
-   
+     
+   // add reservation to the array 
+   reservations.push({nom: nom, siege :siege })
 
 
    
