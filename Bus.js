@@ -153,6 +153,9 @@ resNom.value = ""
 afficherMessage(msgRes, "Reservation effectuee en succes!")
 })
   
-// 
+// Click event for modification button
+btnModifier.addEventListener("click", function() {
+    let oldSiege = Number(modPassager.value);
+    let nouveauNom = modNom.value.trim();
 
-actualiser()
+    
