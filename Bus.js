@@ -166,3 +166,8 @@ btnModifier.addEventListener("click", function() {
 
     // find the passager reservation 
     let reservation = trouverParSiege(oldSiege)
+
+    // update nom only if the input(nom)is not empty
+    if (nouveauNom!=="" ){
+        reservation.nom = nouveauNom
+    }
