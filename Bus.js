@@ -134,5 +134,8 @@ btnReserver.addEventListener("click",function(){
    // add reservation to the array 
    reservations.push({nom: nom, siege :siege })
 
+// save and update 
 
-   
+sauvegarder()
+actualiser()
+
