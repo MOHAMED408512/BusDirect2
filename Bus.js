@@ -2,20 +2,11 @@ const NOMBRE_DE_SIEGES = 20;
 const PRIX = 80;
 const CLE_STORAGE = "busdirect_reservations";
 
-
-
-let reservationsData = localStorage.getItem(CLE_STORAGE)
-let reservations ;
-if (reservationsData !== null) {
-    reservations = JSON.parse(reservationsData);
- } else {
-        reservations = [];
- }
-
-
+let reservationsData = localStorage.getItem(CLE_STORAGE);
+let reservations = reservationsData !== null ? JSON.parse(reservationsData) : [];
 
 // DOM Elements
-const availableCount = document.getElementById("available-count")
+const availableCount = document.getElementById("available-count");
 const occupiedCount = document.getElementById("occupied-count");
 const revenueCount = document.getElementById("revenue-count");
 
@@ -34,50 +25,50 @@ const supSiege = document.getElementById("sup-siege");
 const btnSupprimer = document.getElementById("btn-supprimer");
 const msgSupp = document.getElementById("msg-supp"); 
 
-
-
-// Fonction message temporaire 
+// Helper Temporary message
 function afficherMessage(box, text, erreur = false) {
-    // 1  mettre le texte du message dans le div
     box.textContent = text;
-    
-    // 2 retirer la classe "hidden" pour afficher le message
     box.classList.remove("hidden");
 
-    // 3if right color based on error or success
     if (erreur === true) {
         box.style.color = "red";
-        box.style.backgroundColor = "#fee2e2"; // red
+        box.style.backgroundColor = "#fee2e2";
     } else {
         box.style.color = "green";
-        box.style.backgroundColor = "#dcfce7"; // green
+        box.style.backgroundColor = "#dcfce7";
     }
 
-    // 4 cacher le message après 3 secondes
     setTimeout(function() {
         box.classList.add("hidden");
     }, 3000);
 }
 
+// Helpe Save data to LocalStorage
 function sauvegarder() {
     localStorage.setItem(CLE_STORAGE, JSON.stringify(reservations));
 }
 
-// Trouver par siège (find dyal JavaScript)
+// Helper Find by seat number
 function trouverParSiege(num) {
     return reservations.find(r => r.siege === Number(num)) || null;
 }
 
-//  Premier libre (loop )
+// Helper Check if a seat is free
+function estLibre(num) {
+    return trouverParSiege(num) === null;
+}
+
+// Helper First available seat using estLibre
 function premierLibre() {
     for (let i = 1; i <= NOMBRE_DE_SIEGES; i++) {
-        if (!trouverParSiege(i)) return i;
+        if (estLibre(i)) return i;
     }
     return null;
 }
 
+// Main Actualiser Function
 function actualiser() {
-    // modifier 20 seats with color
+    // 1 Update the 20 seats (color and text)
     for (let i = 1; i <= NOMBRE_DE_SIEGES; i++) {
         let li = document.getElementById("siege-" + i);
         let r = trouverParSiege(i);
@@ -90,12 +81,17 @@ function actualiser() {
             li.innerHTML = "<span>" + i + "</span><br>Libre";
         }
     } 
-}
-        // Calculate stats and total revenue
+
+    // 2 Calculate stats and total revenue
     let occupes = reservations.length;
     availableCount.textContent = NOMBRE_DE_SIEGES - occupes;
     occupiedCount.textContent = occupes;
     revenueCount.textContent = (occupes * PRIX) + " DH";
 
-   
+    // 3 Clear select dropdown lists
+    resSiege.innerHTML = '<option value="">-- Choisir un siège --</option>';
+    modPassager.innerHTML = '<option value="">-- Choisir un passager --</option>';
+    modSiege.innerHTML = '<option value="">-- Même siège --</option>';
+    supSiege.innerHTML = '<option value="">-- Choisir un passager --</option>';
+
     
