@@ -102,4 +102,13 @@ function actualiser() {
         }
     }
 
-    
+   
+    // 5 Add current passengers to modify and delete lists
+    for (let r of reservations) {
+        let texte = r.nom + " (Siège " + r.siege + ")";
+        modPassager.add(new Option(texte, r.siege));
+        supSiege.add(new Option(texte, r.siege));
+    }
+}
+
+
