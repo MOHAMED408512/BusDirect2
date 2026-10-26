@@ -164,4 +164,5 @@ btnModifier.addEventListener("click", function() {
         return
     }
 
-    
+    // find the passager reservation 
+    let reservation = trouverParSiege(oldSiege)
