@@ -103,7 +103,7 @@ function actualiser() {
     }
 
    
-    // 5 Add current passengers to modify and delete lists
+    // 5  passengers to modify and delete sieges
     for (let r of reservations) {
         let texte = r.nom + " (Siège " + r.siege + ")";
         modPassager.add(new Option(texte, r.siege));
@@ -111,4 +111,14 @@ function actualiser() {
     }
 }
 
+//click event for resrvation button
+btnReserver.addEventListener("click",function(){
+    let nom = resNom.value
+    let siege = parseInt(resSiege.value)
 
+  }) 
+
+
+
+// 
+actualiser()
