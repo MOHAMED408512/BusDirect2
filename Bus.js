@@ -158,4 +158,10 @@ btnModifier.addEventListener("click", function() {
     let oldSiege = Number(modPassager.value);
     let nouveauNom = modNom.value.trim();
 
+    // 1 checking if a passanger is selected 
+    if(modPassager.value==="") {
+        afficherMessage(msgMod, " Veuillez choisir un passager !",true)
+        return
+    }
+
     
