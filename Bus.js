@@ -177,3 +177,10 @@ btnModifier.addEventListener("click", function() {
     if (modSiege.value!=="") {
         reservation.siege = parseInt(modSiege.value)
     }
+
+    sauvegarder()
+    actualiser()
+// afficher msg when modification avec succes
+    modNom.value = ""
+    afficherMessage(msgMod , " modification effectue avec succes")
+})
