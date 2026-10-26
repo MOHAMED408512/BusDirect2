@@ -116,9 +116,11 @@ btnReserver.addEventListener("click",function(){
     let nom = resNom.value
     let siege = parseInt(resSiege.value)
 
-  }) 
+  
 
 
-
-// 
-actualiser()
+  // checking if the name is empty
+   if (nom === "") {
+    afficherMessage(msgRes, "Veuillez entrer un nom !",true)
+   return
+   }
