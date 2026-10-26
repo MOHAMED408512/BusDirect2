@@ -59,3 +59,35 @@ function afficherMessage(box, text, erreur = false) {
     }, 3000);
 }
 
+function sauvegarder() {
+    localStorage.setItem(CLE_STORAGE, JSON.stringify(reservations));
+}
+
+// 2. Trouver par siège (find dyal JavaScript)
+function trouverParSiege(num) {
+    return reservations.find(r => r.siege === Number(num)) || null;
+}
+
+// 3. Premier libre (loop )
+function premierLibre() {
+    for (let i = 1; i <= NOMBRE_DE_SIEGES; i++) {
+        if (!trouverParSiege(i)) return i;
+    }
+    return null;
+}
+
+function actualiser() {
+    // 1. T-modifier 20 seats with color
+    for (let i = 1; i <= NOMBRE_DE_SIEGES; i++) {
+        let li = document.getElementById("siege-" + i);
+        let r = trouverParSiege(i);
+
+        if (r) {
+            li.className = "bg-red-100 border p-3 rounded text-red-600 font-bold text-center";
+            li.innerHTML = "<span>" + i + "</span><br>👤 " + r.nom;
+        } else {
+            li.className = "bg-white border p-3 rounded text-center";
+            li.innerHTML = "<span>" + i + "</span><br>Libre";
+        }
+    } 
+}
