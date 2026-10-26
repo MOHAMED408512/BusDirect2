@@ -211,7 +211,12 @@ btnSupprimer.addEventListener("click", function () {
 
     // checking if a passanger is selected 
 
-    if (supSiege.value === "" )
+    if (supSiege.value === "" ) {
         afficherMessage(msgSupp, " Veuillez choisir un passager ! " , true )
     return
     }
+     
+
+    // find the position of reservations in the array
+
+   let position = reservations.findIndex(r => r.siege === siegeASupprimer);
