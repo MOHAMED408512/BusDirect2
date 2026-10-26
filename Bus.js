@@ -124,3 +124,13 @@ btnReserver.addEventListener("click",function(){
     afficherMessage(msgRes, "Veuillez entrer un nom !",true)
    return
    }
+
+   // checking if a siege is selected
+   if (resSiege.value === "") {
+    afficherMessage(msgRes , " Veuillez choisir un siege !" , true)
+    return
+   } 
+   
+
+
+   
