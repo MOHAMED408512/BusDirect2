@@ -171,3 +171,9 @@ btnModifier.addEventListener("click", function() {
     if (nouveauNom!=="" ){
         reservation.nom = nouveauNom
     }
+
+    //update seat only if a seat is chosen
+
+    if (modSiege.value!=="") {
+        reservation.siege = parseInt(modSiege.value)
+    }
