@@ -209,5 +209,9 @@ btnModifier.addEventListener("click", function() {
 btnSupprimer.addEventListener("click", function () {
     let siegeASupprimer = parseInt(supSiege.value)
 
-    
+    // checking if a passanger is selected 
+
+    if (supSiege.value === "" )
+        afficherMessage(msgSupp, " Veuillez choisir un passager ! " , true )
+    return
     }
