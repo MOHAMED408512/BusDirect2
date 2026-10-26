@@ -111,6 +111,16 @@ function actualiser() {
     }
 }
 
+
+
+
+
+
+
+ //////////////////////////////////////////////////////////////
+
+
+
 //click event for resrvation button
 btnReserver.addEventListener("click",function(){
     let nom = resNom.value
@@ -153,6 +163,11 @@ resNom.value = ""
 afficherMessage(msgRes, "Reservation effectuee en succes!")
 })
   
+
+
+//////////////////////////////////////////////////////////////////
+
+
 // Click event for modification button
 btnModifier.addEventListener("click", function() {
     let oldSiege = Number(modPassager.value);
@@ -184,3 +199,15 @@ btnModifier.addEventListener("click", function() {
     modNom.value = ""
     afficherMessage(msgMod , " modification effectue avec succes")
 })
+
+////////////////////////////////////////////////////////////////////////////
+
+
+
+//click event for supprimer with addEventListener and with splice
+
+btnSupprimer.addEventListener("click", function () {
+    let siegeASupprimer = parseInt(supSiege.value)
+
+    
+    }
