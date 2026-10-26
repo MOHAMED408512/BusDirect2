@@ -139,3 +139,9 @@ btnReserver.addEventListener("click",function(){
 sauvegarder()
 actualiser()
 
+//show succes with a message
+
+resNom.value = ""
+afficherMessage(msgRes, "Reservation effectuee en succes!")
+})
+
