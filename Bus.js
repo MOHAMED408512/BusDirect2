@@ -25,7 +25,7 @@ const supSiege = document.getElementById("sup-siege");
 const btnSupprimer = document.getElementById("btn-supprimer");
 const msgSupp = document.getElementById("msg-supp"); 
 
-// Helper Temporary message
+//  Temporary message
 function afficherMessage(box, text, erreur = false) {
     box.textContent = text;
     box.classList.remove("hidden");
@@ -43,22 +43,22 @@ function afficherMessage(box, text, erreur = false) {
     }, 3000);
 }
 
-// Helpe Save data to LocalStorage
+//  Save data to LocalStorage
 function sauvegarder() {
     localStorage.setItem(CLE_STORAGE, JSON.stringify(reservations));
 }
 
-// Helper Find by seat number
+//  Find by seat number
 function trouverParSiege(num) {
     return reservations.find(r => r.siege === Number(num)) || null;
 }
 
-// Helper Check if a seat is free
+// Check if a seat is free
 function estLibre(num) {
     return trouverParSiege(num) === null;
 }
 
-// Helper First available seat using estLibre
+//  First available seat using estLibre
 function premierLibre() {
     for (let i = 1; i <= NOMBRE_DE_SIEGES; i++) {
         if (estLibre(i)) return i;
@@ -68,7 +68,7 @@ function premierLibre() {
 
 // Main Actualiser Function
 function actualiser() {
-    // 1 Update the 20 seats (color and text)
+    // 1. Update the 20 seats (color and text)
     for (let i = 1; i <= NOMBRE_DE_SIEGES; i++) {
         let li = document.getElementById("siege-" + i);
         let r = trouverParSiege(i);
@@ -82,90 +82,97 @@ function actualiser() {
         }
     } 
 
-    // 2 Calculate stats and total revenue
+    //Calculate stats and total revenue
     let occupes = reservations.length;
     availableCount.textContent = NOMBRE_DE_SIEGES - occupes;
     occupiedCount.textContent = occupes;
     revenueCount.textContent = (occupes * PRIX) + " DH";
 
-    // 3 Clear select dropdown lists
+    //  Clear select dropdown lists
     resSiege.innerHTML = '<option value="">-- Choisir un siège --</option>';
     modPassager.innerHTML = '<option value="">-- Choisir un passager --</option>';
     modSiege.innerHTML = '<option value="">-- Même siège --</option>';
     supSiege.innerHTML = '<option value="">-- Choisir un passager --</option>';
 
-    // 4 Add available seats to select lists using estLibre
+    //  Add available seats to select lists using innerhtml
     for (let i = 1; i <= NOMBRE_DE_SIEGES; i++) {
         if (estLibre(i)) {
-            resSiege.add(new Option("Siège " + i, i));
-            modSiege.add(new Option("Siège " + i, i));
+            resSiege.innerHTML += '<option value="' + i + '">Siège ' + i + '</option>';
+            modSiege.innerHTML += '<option value="' + i + '">Siège ' + i + '</option>';
         }
     }
-
    
-    // 5  passengers to modify and delete sieges
+    //  Add passengers to modify and delete lists using innerHTML
     for (let r of reservations) {
         let texte = r.nom + " (Siège " + r.siege + ")";
-        modPassager.add(new Option(texte, r.siege));
-        supSiege.add(new Option(texte, r.siege));
+        modPassager.innerHTML += '<option value="' + r.siege + '">' + texte + '</option>';
+        supSiege.innerHTML += '<option value="' + r.siege + '">' + texte + '</option>';
     }
 }
 
+// ////////////////////////////////////////////////////////////////////////////////////
+
+
+// Click event for reservation button
+btnReserver.addEventListener("click", function() {
+    let nom = resNom.value.trim();
+    let siege;
 
 
 
 
+ // checking if the name is empty
+
+    if (nom === "") {
+        afficherMessage(msgRes, "Veuillez entrer un nom !", true);
+        return;
+    }
 
 
- //////////////////////////////////////////////////////////////
+// checking if a siege is selected
 
 
 
-//click event for resrvation button
-btnReserver.addEventListener("click",function(){
-    let nom = resNom.value
-    let siege = parseInt(resSiege.value)
-
-  
-
-
-  // checking if the name is empty
-   if (nom === "") {
-    afficherMessage(msgRes, "Veuillez entrer un nom !",true)
-   return
-   }
-
-   // checking if a siege is selected
-   if (resSiege.value === "") {
-    afficherMessage(msgRes , " Veuillez choisir un siege !" , true)
-    return
-   } 
-     
-
-   // check if the bus is full 
-if(siege===null){
-    afficherMessage(msgRes, " le Bus est full get out !!! ", true)
-    return
-}
+    if (resSiege.value !== "") {
+        siege = parseInt(resSiege.value);
+    } else {
+        siege = premierLibre();
+    }
 
 
-   // add reservation to the array 
-   reservations.push({nom: nom, siege :siege })
+ // check if the bus is full 
+
+
+    if (siege === null) {
+        afficherMessage(msgRes, "Le bus est complet !", true);
+        return;
+    }
+
+
+// add reservation to the array
+
+
+    reservations.push({ nom: nom, siege: siege });
+
+
 
 // save and update 
 
-sauvegarder()
-actualiser()
+    sauvegarder();
+    actualiser();
 
-//show succes with a message
 
-resNom.value = ""
-afficherMessage(msgRes, "Reservation effectuee en succes!")
-})
-  
+    //show succes with a message
+
+
+    resNom.value = "";
+    afficherMessage(msgRes, "Reservation effectuee avec succes !");
+});
 
 
 //////////////////////////////////////////////////////////////////
+
+
 
 
 // Click event for modification button
@@ -173,49 +180,84 @@ btnModifier.addEventListener("click", function() {
     let oldSiege = Number(modPassager.value);
     let nouveauNom = modNom.value.trim();
 
-    // 1 checking if a passanger is selected 
-    if(modPassager.value==="") {
-        afficherMessage(msgMod, " Veuillez choisir un passager !",true)
-        return
+
+// 1 checking if a passanger is selected 
+
+
+    if (modPassager.value === "") {
+        afficherMessage(msgMod, "Veuillez choisir un passager !", true);
+        return;
     }
 
     // find the passager reservation 
-    let reservation = trouverParSiege(oldSiege)
 
-    // update nom only if the input(nom)is not empty
-    if (nouveauNom!=="" ){
-        reservation.nom = nouveauNom
+    let reservation = trouverParSiege(oldSiege);
+
+     // update nom only if the input(nom)is not empty
+
+    if (reservation) {
+
+
+        if (nouveauNom !== "") {
+            reservation.nom = nouveauNom;
+        }
+
+
+        //update seat only if a seat is chosen
+
+
+        if (modSiege.value !== "") {
+            reservation.siege = parseInt(modSiege.value);
+        }
     }
 
-    //update seat only if a seat is chosen
+    sauvegarder();
+    actualiser();
 
-    if (modSiege.value!=="") {
-        reservation.siege = parseInt(modSiege.value)
-    }
 
-    sauvegarder()
-    actualiser()
+
+
 // afficher msg when modification avec succes
-    modNom.value = ""
-    afficherMessage(msgMod , " modification effectue avec succes")
-})
 
-////////////////////////////////////////////////////////////////////////////
+    modNom.value = "";
+    modSiege.value = "";
+    afficherMessage(msgMod, "Modification effectuee avec succes !");
+});
+ 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// Click event for suppression button (using filter)
 
 
 
-//click event for supprimer with addEventListener and with splice
+btnSupprimer.addEventListener("click", function() {
+    let siegeASupprimer = parseInt(supSiege.value);
 
-btnSupprimer.addEventListener("click", function () {
-    let siegeASupprimer = parseInt(supSiege.value)
 
-    // checking if a passanger is selected 
 
-    if (supSiege.value === "" ) {
-        afficherMessage(msgSupp, " Veuillez choisir un passager ! " , true )
-    return
+// checking if a passanger is selected 
+
+
+    if (supSiege.value === "") {
+        afficherMessage(msgSupp, "Veuillez choisir un passager !", true);
+        return;
     }
-     
-// 2. Keep only the reservations that DO NOT match the seat to delete
+
+//  Keep only the reservations that DO NOT match the seat to delete
+
+
     reservations = reservations.filter(r => r.siege !== siegeASupprimer);
-    
+
+    sauvegarder();
+    actualiser();
+
+
+ // message se suppression effectuer en suucces 
+
+
+    afficherMessage(msgSupp, "Supression effectuee avec succes !");
+});
+
+//  actualiser on page load
+actualiser();
