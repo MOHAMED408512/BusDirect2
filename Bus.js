@@ -216,5 +216,6 @@ btnSupprimer.addEventListener("click", function () {
     return
     }
      
-
+// 2. Keep only the reservations that DO NOT match the seat to delete
+    reservations = reservations.filter(r => r.siege !== siegeASupprimer);
     
