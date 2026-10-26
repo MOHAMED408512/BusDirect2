@@ -256,7 +256,7 @@ btnSupprimer.addEventListener("click", function() {
  // message se suppression effectuer en suucces 
 
 
-    afficherMessage(msgSupp, "Supression effectuee avec succes !");
+    afficherMessage( msgSupp, "Supression effectuee avec succes !");
 });
 
 //  actualiser on page load
