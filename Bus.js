@@ -25,6 +25,9 @@ const supSiege = document.getElementById("sup-siege");
 const btnSupprimer = document.getElementById("btn-supprimer");
 const msgSupp = document.getElementById("msg-supp"); 
 
+
+
+
 //  Temporary message
 function afficherMessage(box, text, erreur = false) {
     box.textContent = text;
@@ -82,7 +85,8 @@ function actualiser() {
         }
     } 
 
-    //Calculate stats and total revenue
+    //Calculate stats and total revenue 80 dh x blayss
+
     let occupes = reservations.length;
     availableCount.textContent = NOMBRE_DE_SIEGES - occupes;
     occupiedCount.textContent = occupes;
