@@ -9,21 +9,22 @@
 </head>
 <body class="bg-blue-600 p-8">
 
-  <!-- HEADER b grid -->
-<header class="bg-white p-5 mb-4 rounded-lg">
-  <div class="  grid grid-cols-2 ">
-    
-    <!-- word Busdirect f header grid-->
-     <div>
+  <!-- HEADER with flex -->
+<header class="bg-white p-5 mb-4 rounded-lg shadow-sm flex items-center justify-between">
+  <div class="flex items-center space-x-3">
+    <img src="/photos/bus-logo-abstract_7315-17 (1).avif" alt="BusDirect Logo" class="h-8 w-auto">
+      
+            
+    <!-- word Busdirect f header -->
+     
       <h1 class="text-xl font-bold text-blue-900">BusDirect</h1>
     </div>
     
     <!--  word Reservation  grid-->
-    <nav class="justify-self-end"> <!--the word reservation to the right -->
-      <a href="#reserver-section" class="text-blue-600 font-bold text-sm hover:underline">Réservation</a>
-    </nav>
+    <nav> 
+    <a href="#reserver-section" class="text-blue-600 font-bold text-sm hover:underline">Réservation</a>
+  </nav>
 
-  </div>
 </header>
 
 
@@ -32,8 +33,7 @@
 
 
 
-
-  <!-- STATS & TRAJET -->
+  <!-- STATS & TRAJET  with flex -->
   <section class="bg-white p-4 rounded-lg flex justify-between items-center mb-4 ">
     <div>
       <span class="font-bold">Safi ➔ Marrakech</span>
@@ -51,7 +51,9 @@
 
 
 
-  <!-- MAIN CONTENT layout  seats w reservation b grid-->
+  
+
+  <!-- MAIN CONTENT layout  seats w reservation b  GRID -->
   <main class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
     <!-- LEFT: PLAN DU BUS (Les siège) -->

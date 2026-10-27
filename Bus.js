@@ -66,10 +66,18 @@ function trouverParSiege(siegeNumb) {
 return null 
 }
 
+
+
+
+
 // Check if a seat is free
 function estLibre(siegeNumb) {
     return trouverParSiege(siegeNumb) === null;
 }
+
+
+
+
 
 //  First available seat using estLibre
 function premierLibre() {
@@ -78,6 +86,7 @@ function premierLibre() {
     }
     return null;
 }
+
 
 
 
@@ -98,6 +107,9 @@ function actualiser() {
         }
     } 
 
+
+
+    
     //Calculate stats and total revenue 80 dh x blayss    NOMBRE-DE-SIEGES=20       PRIX=80
 
     let occupes = reservations.length;
