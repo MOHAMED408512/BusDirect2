@@ -1,8 +1,8 @@
 const NOMBRE_DE_SIEGES = 20;
 const PRIX = 80;
-const CLE_STORAGE = "busdirect_reservations";
+const STORAGE = "busdirect_reservations";
 
-let reservationsData = localStorage.getItem(CLE_STORAGE);
+let reservationsData = localStorage.getItem(STORAGE);
 let reservations = reservationsData !== null ? JSON.parse(reservationsData) : [];
 
 // DOM Elements
@@ -29,6 +29,7 @@ const msgSupp = document.getElementById("msg-supp");
 
 
 //  Temporary message
+
 function afficherMessage(box, text, erreur = false) {
     box.textContent = text;
     box.classList.remove("hidden");
@@ -48,17 +49,17 @@ function afficherMessage(box, text, erreur = false) {
 
 //  Save data to LocalStorage
 function sauvegarder() {
-    localStorage.setItem(CLE_STORAGE, JSON.stringify(reservations));
+    localStorage.setItem(STORAGE, JSON.stringify(reservations));
 }
 
-//  Find by seat number
-function trouverParSiege(num) {
-    return reservations.find(r => r.siege === Number(num)) || null;
+//  Find trouver par siege
+function trouverParSiege(siegeNumb) {
+    return reservations.find(r => r.siege === parseInt(siegeNumb)) || null;
 }
 
 // Check if a seat is free
-function estLibre(num) {
-    return trouverParSiege(num) === null;
+function estLibre(siegeNumb) {
+    return trouverParSiege(siegeNumb) === null;
 }
 
 //  First available seat using estLibre
@@ -69,10 +70,13 @@ function premierLibre() {
     return null;
 }
 
+
+
+
 // Main Actualiser Function
 function actualiser() {
     // 1. Update the 20 seats (color and text)
-    for (let i = 1; i <= NOMBRE_DE_SIEGES; i++) {
+    for (let i = 1; i <= NOMBRE_DE_SIEGES; i++) {  
         let li = document.getElementById("siege-" + i);
         let r = trouverParSiege(i);
 
@@ -85,18 +89,18 @@ function actualiser() {
         }
     } 
 
-    //Calculate stats and total revenue 80 dh x blayss
+    //Calculate stats and total revenue 80 dh x blayss    NOMBRE-DE-SIEGES=20       PRIX=80
 
     let occupes = reservations.length;
     availableCount.textContent = NOMBRE_DE_SIEGES - occupes;
     occupiedCount.textContent = occupes;
     revenueCount.textContent = (occupes * PRIX) + " DH";
 
-    //  Clear select dropdown lists
-    resSiege.innerHTML = '<option value="">-- Choisir un siège --</option>';
-    modPassager.innerHTML = '<option value="">-- Choisir un passager --</option>';
-    modSiege.innerHTML = '<option value="">-- Même siège --</option>';
-    supSiege.innerHTML = '<option value="">-- Choisir un passager --</option>';
+    //   lists 
+    resSiege.innerHTML = '<option value=""> Choisir un siège </option>';
+    modPassager.innerHTML = '<option value=""> Choisir un passager </option>';
+    modSiege.innerHTML = '<option value=""> Même siège </option>';
+    supSiege.innerHTML = '<option value=""> Choisir un passager </option>';
 
     //  Add available seats to select lists using innerhtml
     for (let i = 1; i <= NOMBRE_DE_SIEGES; i++) {
