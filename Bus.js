@@ -54,7 +54,16 @@ function sauvegarder() {
 
 //  Find trouver par siege
 function trouverParSiege(siegeNumb) {
-    return reservations.find(r => r.siege === parseInt(siegeNumb)) || null;
+
+    let numero = parseInt(siegeNumb)
+    for (let i = 0; i < reservations.length; i++) {
+        if (reservations[i].siege === numero ) {
+            return reservations[i]
+
+
+        }
+}
+return null 
 }
 
 // Check if a seat is free
@@ -97,10 +106,10 @@ function actualiser() {
     revenueCount.textContent = (occupes * PRIX) + " DH";
 
     //   lists 
-    resSiege.innerHTML = '<option value=""> Choisir un siège </option>';
-    modPassager.innerHTML = '<option value=""> Choisir un passager </option>';
-    modSiege.innerHTML = '<option value=""> Même siège </option>';
-    supSiege.innerHTML = '<option value=""> Choisir un passager </option>';
+    resSiege.innerHTML = '<option value="">-- Choisir un siège --</option>';
+    modPassager.innerHTML = '<option value="">-- Choisir un passager --</option>';
+    modSiege.innerHTML = '<option value="">-- Même siège --</option>';
+    supSiege.innerHTML = '<option value="">-- Choisir un passager --</option>';
 
     //  Add available seats to select lists using innerhtml
     for (let i = 1; i <= NOMBRE_DE_SIEGES; i++) {
