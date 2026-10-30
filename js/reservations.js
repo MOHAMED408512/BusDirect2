@@ -1,0 +1,1 @@
+placesLibres(trip)= capacity-reservations.length

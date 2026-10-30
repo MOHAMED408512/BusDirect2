@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BusDirect</title>
+  <!-- Tailwind CSS -->
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-blue-600 p-8">
+
+  <!-- HEADER with flex -->
+<header class="bg-white p-5 mb-4 rounded-lg flex items-center justify-between">
+  <div class="flex items-center space-x-3">
+    <img src="/photos/bus-logo-abstract_7315-17 (1).avif" alt="BusDirect Logo" class="h-8 w-auto">
+      
+            
+    <!-- word Busdirect f header -->
+     
+      <h1 class="text-xl font-bold text-blue-900">BusDirect</h1>
+    </div>
+    
+    <!--  word Reservation  grid-->
+    <nav> 
+    <a href="#reserver-section" class="text-blue-600 font-bold text-sm hover:underline">Réservation</a>
+  </nav>
+
+</header>
+
+
+
+
+
+
+
+  <!-- STATS & TRAJET  with flex -->
+  <section class="bg-white p-4 rounded-lg flex justify-between items-center mb-4 ">
+    <div>
+      <span class="font-bold">Safi ➔ Marrakech</span>
+      <span class="bg-blue-100 text-blue-600 p-2 rounded text-xs ">80 DH</span>
+    </div>
+
+    <div class="text-xs flex gap-4 font-semibold">
+      <span>⚪ Libres: <strong id="available-count" class="text-blue-600">20</strong></span>
+      <span>🔴 Occupés: <strong id="occupied-count" class="text-red-600">0</strong></span>
+      <span> Rossita: <strong id="revenue-count" class="text-green-600">0 DH</strong></span>
+    </div>
+  </section>
+
+
+
+
+
+  
+
+  <!-- MAIN CONTENT layout  seats w reservation b  GRID -->
+  <main class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+    <!-- LEFT: PLAN DU BUS (Les siège) -->
+    <section class="bg-white p-4 rounded-lg">
+      <h2 class="font-bold text-blue-500 mb-3">Plan du Bus (20 places)</h2>
+      
+      <ol id="bus-seats" class="grid grid-cols-4 gap-2 text-center text-xs font-bold">
+        <li id="siege-1" class="bg-white border p-3 rounded"><span>01</span><br>Libre</li>
+        <li id="siege-2" class="bg-white border p-3 rounded"><span>02</span><br>Libre</li>
+        <li id="siege-3" class="bg-white border p-3 rounded"><span>03</span><br>Libre</li>
+        <li id="siege-4" class="bg-white border p-3 rounded"><span>04</span><br>Libre</li>
+        <li id="siege-5" class="bg-white border p-3 rounded"><span>05</span><br>Libre</li>
+        <li id="siege-6" class="bg-white border p-3 rounded"><span>06</span><br>Libre</li>
+        <li id="siege-7" class="bg-white border p-3 rounded"><span>07</span><br>Libre</li>
+        <li id="siege-8" class="bg-white border p-3 rounded"><span>08</span><br>Libre</li>
+        <li id="siege-9" class="bg-white border p-3 rounded"><span>09</span><br>Libre</li>
+        <li id="siege-10" class="bg-white border p-3 rounded"><span>10</span><br>Libre</li>
+        <li id="siege-11" class="bg-white border p-3 rounded"><span>11</span><br>Libre</li>
+        <li id="siege-12" class="bg-white border p-3 rounded"><span>12</span><br>Libre</li>
+        <li id="siege-13" class="bg-white border p-3 rounded"><span>13</span><br>Libre</li>
+        <li id="siege-14" class="bg-white border p-3 rounded"><span>14</span><br>Libre</li>
+        <li id="siege-15" class="bg-white border p-3 rounded"><span>15</span><br>Libre</li>
+        <li id="siege-16" class="bg-white border p-3 rounded"><span>16</span><br>Libre</li>
+        <li id="siege-17" class="bg-white border p-3 rounded"><span>17</span><br>Libre</li>
+        <li id="siege-18" class="bg-white border p-3 rounded"><span>18</span><br>Libre</li>
+        <li id="siege-19" class="bg-white border p-3 rounded"><span>19</span><br>Libre</li>
+        <li id="siege-20" class="bg-white border p-3 rounded"><span>20</span><br>Libre</li>
+      </ol>
+    </section>
+
+    <!-- RIGHT: FORMULAIRES -->
+    <section class>
+      
+      <!-- 1. RESERVATION -->
+    <form id="reserver-section" class="bg-white p-4 rounded-lg mb-4">
+    <h2 class="font-bold text-sm text-blue-900">Réserver une place</h2>
+
+    <!--message reservation fonction afficher message  -->
+
+    <div id="msg-res" class="hidden p-2 rounded text-xs font-semibold text-center border"></div>
+
+    
+    <div>
+      <label class="text-xs text-gray-600 block mb-1">Nom du passager</label>
+      <input id="res-nom" type="text" placeholder="Ex : Abdellah lhowari" class="w-full bg-gray-100 p-2 rounded text-xs border border-gray-200">
+    </div>
+    <div>
+      <label class="text-xs text-gray-600 block mb-1">Numéro de siège</label>
+      <select id="res-siege" class="w-full bg-gray-100 p-2 mb-4 rounded text-xs cursor-pointer border border-gray-200"></select>
+    </div>
+    <button type="button" id="btn-reserver" class="w-full bg-blue-600 text-white p-2 rounded text-xs font-bold hover:bg-blue-700 transition cursor-pointer">
+      Confirmer Réservation
+    </button>
+</form>
+      <!-- 2. MODIFICATION -->
+      <form class="bg-white p-4 rounded-lg mb-4">
+        <h2 class="font-bold text-sm text-amber-600">Modifier une place</h2>
+
+        <!--message modification fonction afficher message  -->
+
+        <div id="msg-mod" class="hidden p-2 rounded text-xs font-semibold text-center border"></div>
+        <div>
+          <label class="text-xs text-gray-600 block mb-1">Choisir le passager</label>
+          <select id="mod-passager" class="w-full bg-gray-100 p-2 rounded text-xs cursor-pointer border border-gray-200"></select>
+        </div>
+        <div>
+          <label class="text-xs text-gray-600 block mb-1">Nouveau nom du passager</label>
+          <input id="mod-nom" type="text" placeholder="Nouveau nom" class="w-full bg-gray-100 p-2 rounded text-xs border border-gray-200">
+        </div>
+        <div>
+          <label class="text-xs text-gray-600 block mb-1">Changer de siège (Optionnel)</label>
+          <select id="mod-siege" class="w-full bg-gray-100 p-2 mb-4 rounded text-xs cursor-pointer border border-gray-200"></select>
+        </div>
+        <button type="button" id="btn-modifier" class="w-full bg-amber-600 text-white p-2 rounded text-xs font-bold hover:bg-amber-700  transition cursor-pointer ">
+          Modifier
+        </button>
+      </form>
+
+      <!-- 3 SUPPRESSION -->
+      <form class="bg-white p-4 rounded-lg">
+        <h2 class="font-bold text-sm text-red-600 mb-1">Supprimer une place</h2>
+
+        <!--message supprimer fonction afficher message  -->
+
+        <div id="msg-supp" class="hidden p-2 rounded text-xs font-semibold text-center border"></div>
+        <div>
+
+
+          <label class="text-xs text-gray-600 block mb-3  ">Choisir le passager à supprimer</label>
+          <select id="sup-siege" class="w-full bg-gray-100 p-2 mb-4 rounded text-xs cursor-pointer border border-gray-200"></select>
+        </div>
+        <button type="button" id="btn-supprimer" class="w-full bg-red-600 text-white p-2 rounded text-xs font-bold hover:bg-red-700 transition cursor-pointer">
+          Supprimer
+        </button>
+      </form>
+
+    </section>
+
+  </main>
+
+  <!-- Link JavaScript -->
+  <script src= "Bus.js"></script>
+</body>
+</html>
