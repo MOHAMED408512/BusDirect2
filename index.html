@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BusDirect</title>
-  <!-- Tailwind CSS -->
+  
   <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 </head>
 <body class="bg-blue-600 p-8">
@@ -33,11 +33,11 @@
 
 
 
-  <section class="bg-white p-5 mb-4 rounded-lg w-full flex items-center justify-between gap-4">
+  <section class="bg-white p-5 mb-4 rounded-lg w-full flex items-center justify- gap-4">
   <div class ="bg-blue-200 p-4 rounded-lg flex-1 text-center">
 <p class = "text-xs font-bold text-blue-700">Total recettes</p>
 
- <p class ="text-2xl font-extrabold text-gray my-1">8000 DH</p>   
+ <p id ="totalRecette" class ="text-2xl font-extrabold text-gray">8000 DH</p>   
  <P class =" text-xs text-blue-600">Ce mois-ci</P>   
 </div>
 
@@ -46,7 +46,7 @@
 <!--  Trajets Totales 2eme carte-->
   <div class ="bg-blue-200 p-4 rounded-lg flex-1 text-center">
     <p class ="text-xs font-bold text-blue-700">Trajets totales</p>
- <p class ="text-2xl font-extrabold text-gray my-1">12</p>   
+ <p id="totalTrajets" class ="text-2xl font-extrabold text-gray ">12</p>   
  <P class =" text-xs text-blue-600">Trajets actifs</P>   
 </div>
 
@@ -54,7 +54,7 @@
 <!-- passagers 3eme care -->
  <div class ="bg-blue-200 p-4 rounded-lg flex-1 text-center">
     <p class ="text-xs font-bold text-blue-700">Passagers</p>
- <p class ="text-2xl font-extrabold text-gray my-1">140</p>   
+ <p id = "totalPassagers" class ="text-2xl font-extrabold text-gray ">140</p>   
  <P class =" text-xs text-blue-600">Reseau</P>
  </div>
 
@@ -62,7 +62,7 @@
  <!-- en attente 4eme carte  -->
 <div class ="bg-blue-200 p-4 rounded-lg flex-1 text-center">
     <p class ="text-xs font-bold text-blue-700">En attente</p>
- <p class ="text-2xl font-extrabold text-gray my-1">5</p>   
+ <p id ="totalAttente" class ="text-2xl font-extrabold text-gray">5</p>   
  <P class =" text-xs text-blue-600">Liste d'attente</P>   
 </div>
 </section>
@@ -71,9 +71,9 @@
 
 
 <!-- section search -->
-<section class ="bg-blue-400 rounded-xl mb-3 flex">
+<section class =" rounded-xl mb-3 flex gap-4">
 <!-- city search -->
- <div class = "bg-blue-200 p-4 rounded-lg flex-3 flex itmes-center gap-2">
+ <div class = "bg-blue-200 p-4 rounded-lg flex-3 flex items-center gap-2">
   <label class = "font-bold text-sm">Ville:</label>
   <input type ="text" placeholder="Rechercher une ville.." class="w-full p-1 rounded">
 
@@ -98,7 +98,7 @@
   <div class="bg-blue-200 border-2 border-blue-400 p-4 rounded-xl flex flex-col justify-between">
       <div class="flex justify-between items-center mb-2 border-b border-blue-300 pb-2">
         <h3 class="font-bold text-gray-800">CASA to SAFI</h3>
-        <span class="bg-green-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">Disponible</span>
+        <span class="bg-green-600 text-white text-[10px] font-bold px-2 py-1 rounded-full">Disponible</span>
       </div>
       <div class="space-y-1 text-xs text-gray-700 mb-3">
         <p><b>Horaires :</b> 08:00 ➔ 11:30</p>
@@ -115,106 +115,8 @@
 
 
 
-    <div class="bg-blue-200 border-2 border-blue-400 p-4 rounded-xl flex flex-col justify-between">
-      <div class="flex justify-between items-center mb-2 border-b border-blue-300 pb-2">
-        <h3 class="font-bold text-gray-800">RABAT to MARRAKECH</h3>
-        <span class="bg-green-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">Disponible</span>
-      </div>
-      <div class="space-y-1 text-xs text-gray-700 mb-3">
-        <p><b>Horaires :</b> 09:30 ➔ 13:00</p>
-        <p><b>Prix :</b> <span class="text-blue-900 font-bold">120 DH</span></p>
-        <p><b>Disponibilité :</b> 15 / 20</p>
-        <p><b>Attente :</b> <span class="text-red-600 font-bold">2</span></p>
-      </div>
-      <div class="pt-2 border-t border-blue-300 flex justify-between items-center">
-        <span class="text-[11px] font-semibold">Recette: <b>600 DH</b></span>
-        <button class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-3 py-1 rounded-lg">Ouvrir</button>
-      </div>
-    </div>
+    
 
-
-
-
-<div class="bg-blue-200 border-2 border-blue-400 p-4 rounded-xl flex flex-col justify-between">
-      <div class="flex justify-between items-center mb-2 border-b border-blue-300 pb-2">
-        <h3 class="font-bold text-gray-800">Tanger to Agadir</h3>
-        <span class="bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">Complet</span>
-      </div>
-      <div class="space-y-1 text-xs text-gray-700 mb-3">
-        <p><b>Horaires :</b> 06:00 ➔ 12:00</p>
-        <p><b>Prix :</b> <span class="text-blue-900 font-bold">180 DH</span></p>
-        <p><b>Disponibilité :</b> 0 / 20</p>
-        <p><b>Attente :</b> <span class="text-red-600 font-bold">5</span></p>
-      </div>
-      <div class="pt-2 border-t border-blue-300 flex justify-between items-center">
-        <span class="text-[11px] font-semibold">Recette: <b>3600 DH</b></span>
-        <button class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-3 py-1 rounded-lg">Ouvrir</button>
-      </div>
-    </div>
-
-
-
-
-
-    <div class="bg-blue-200 border-2 border-blue-400 p-4 rounded-xl flex flex-col justify-between">
-      <div class="flex justify-between items-center mb-2 border-b border-blue-300 pb-2">
-        <h3 class="font-bold text-gray-800">FES to MEKNES</h3>
-        <span class="bg-green-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">Disponible</span>
-      </div>
-      <div class="space-y-1 text-xs text-gray-700 mb-3">
-        <p><b>Horaires :</b> 10:00 ➔ 11:15</p>
-        <p><b>Prix :</b> <span class="text-blue-900 font-bold">30 DH</span></p>
-        <p><b>Disponibilité :</b> 18 / 20</p>
-        <p><b>Attente :</b> <span class="text-red-600 font-bold">0</span></p>
-      </div>
-      <div class="pt-2 border-t border-blue-300 flex justify-between items-center">
-        <span class="text-[11px] font-semibold">Recette: <b>60 DH</b></span>
-        <button class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-3 py-1 rounded-lg">Ouvrir</button>
-      </div>
-    </div>
-
-
-
-
-
-    <div class="bg-blue-200 border-2 border-blue-400 p-4 rounded-xl flex flex-col justify-between">
-      <div class="flex justify-between items-center mb-2 border-b border-blue-300 pb-2">
-        <h3 class="font-bold text-gray-800">OUJDA to NADOR</h3>
-        <span class="bg-green-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">Disponible</span>
-      </div>
-      <div class="space-y-1 text-xs text-gray-700 mb-3">
-        <p><b>Horaires :</b> 14:00 ➔ 16:00</p>
-        <p><b>Prix :</b> <span class="text-blue-900 font-bold">50 DH</span></p>
-        <p><b>Disponibilité :</b> 10 / 20</p>
-        <p><b>Attente :</b> <span class="text-red-600 font-bold">1</span></p>
-      </div>
-      <div class="pt-2 border-t border-blue-300 flex justify-between items-center">
-        <span class="text-[11px] font-semibold">Recette: <b>500 DH</b></span>
-        <button class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-3 py-1 rounded-lg">Ouvrir</button>
-      </div>
-    </div>
-
-
-
-
-
-
-    <div class="bg-blue-200 border-2 border-blue-400 p-4 rounded-xl flex flex-col justify-between">
-      <div class="flex justify-between items-center mb-2 border-b border-blue-300 pb-2">
-        <h3 class="font-bold text-gray-800">Howara44 to TIZNIT</h3>
-        <span class="bg-green-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">Disponible</span>
-      </div>
-      <div class="space-y-1 text-xs text-gray-700 mb-3">
-        <p><b>Horaires :</b> 16:30 ➔ 18:00</p>
-        <p><b>Prix :</b> <span class="text-blue-900 font-bold">40 DH</span></p>
-        <p><b>Disponibilité :</b> 12 / 20</p>
-        <p><b>Attente :</b> <span class="text-red-600 font-bold">0</span></p>
-      </div>
-      <div class="pt-2 border-t border-blue-300 flex justify-between items-center">
-        <span class="text-[11px] font-semibold">Recette: <b>320 DH</b></span>
-        <button class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-3 py-1 rounded-lg">Ouvrir</button>
-      </div>
-    </div>
 
     </form>
 
@@ -224,4 +126,5 @@
     </main>
 
     <footer class ="text-center text-xs text-white py-2">&copy; 2026 BusDirect</footer>
+    <script type="module" src="js/main-trajets.js"></script>
    </body>
