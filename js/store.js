@@ -12,7 +12,7 @@ export async function tripsJSON() {
 }
 
 //sauvegarder tableau in localstoarge using json.stirngify
-export function sauvegarderTrips(trips) {
+export function sauvegarder(trips) {
     localStorage.setItem("trips",JSON.stringify(trips))
 }
 
@@ -21,7 +21,7 @@ export function sauvegarderTrips(trips) {
 
  // function to get the informations from trips.json 
 
- export async function intitaliser() {
+ export async function initialiser() {
 
     // if the info are already in the localStorage
     const savedInfo = localStorage.getItem("trips")
