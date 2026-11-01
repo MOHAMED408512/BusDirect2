@@ -1,39 +1,24 @@
-busdirect-partie2/
-├── index.html page Trajets
-├── cabine.html page Cabine d'un trajet
-├── data/
-│ └── trips.json 20 trajets (lecture seule)
-├── js/
-│ ├── store.js données
-│ │ ├── initialiser() localStorage, sinon fetch de trips.json
-│ │ └── sauvegarder(trips) enregistre dans le localStorage
-│ │
-│ ├── validators.js validations
-│ │ ├── REGEX_TELEPHONE
-│ │ └── validerPassager(trip, p) nom vide ou en double, téléphone invalide ou en double
-│ │
-│ ├── reservations.js logique (aucun DOM)
-│ │ ├── placesLibres(trip) capacity - reservations.length
-│ │ ├── estVIP(siege) sièges 01 à 04
-│ │ ├── prixSiege(prix, siege) +10 % si VIP
-│ │ ├── recetteTrajet(trip) reduce
-│ │ ├── reserver(trip, p, siege)
-│ │ ├── modifier(trip, siege, p)
-│ │ ├── annuler(trip, siege) + 1er en attente obtient le siège
-│ │ ├── inscrireEnAttente(trip, p)
-│ │ └── retirerDeAttente(trip, i)
-│ │
-│ ├── render.js affichage
-│ │ ├── renderTrajets(trips) cartes
-│ │ ├── renderPagination(page, total)
-│ │ ├── renderCabine(trip) en-tête + 20 sièges
-│ │ ├── renderListeAttente(trip)
-│ │ └── afficherMessage(el, texte) masqué après 3 secondes
-│ │
-│ ├── main-trajets.js point d'entrée de index.html
-│ │ └── afficher() recherche + filtre + page courante
-│ │
-│ └── main-cabine.js point d'entrée de cabine.html
-│ └── afficherTout() réaffiche la cabine après chaque action
-│
-└── README.md
+# BusDirect - Transit Network Management
+
+BusDirect est une application web interactive de gestion des trajets de bus. Ce projet a été développé dans le cadre de la formation web dynamique (Day 3).
+
+## Fonctionnalités principales
+
+- **Affichage Dynamique :** Génération automatique des cartes de trajets à partir d'un fichier JSON (`trajets.json`) via JavaScript (`.map()`).
+- **Calculs en temps réel :**
+  - Calcul dynamique des recettes générées par trajet.
+  - Gestion et affichage des places disponibles et des listes d'attente.
+- **Design Responsive :** Interface moderne structurée avec Tailwind CSS / CSS Grid.
+
+## Technologies utilisées
+
+- **HTML5** (Structure sémantique)
+- **CSS3 / Tailwind CSS** (Stylisation & Responsive Design)
+- **JavaScript (ES6+)** (DOM Manipulation, Fetch API, Array Methods)
+- **Git & GitHub** (Gestion de versions & Branches)
+- **Vercel** (Déploiement en ligne)
+
+## Liens du projet
+
+- **Déploiement Vercel (Live Demo) :** [Mon site en ligne](https://busdirect2-eta.vercel.app/)
+- **Dépôt GitHub :** [Code Source](https://github.com/MOHAMED408512/BusDirect2)
