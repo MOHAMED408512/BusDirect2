@@ -1,24 +1,41 @@
-# BusDirect - Transit Network Management
+BusDirect
 
-BusDirect est une application web interactive de gestion des trajets de bus. Ce projet a été développé dans le cadre de la formation web dynamique (Day 3).
+Site de réservation de places de bus. Projet de formation, partie 2.
 
-## Fonctionnalités principales
+## Description
 
-- **Affichage Dynamique :** Génération automatique des cartes de trajets à partir d'un fichier JSON (`trajets.json`) via JavaScript (`.map()`).
-- **Calculs en temps réel :**
-  - Calcul dynamique des recettes générées par trajet.
-  - Gestion et affichage des places disponibles et des listes d'attente.
-- **Design Responsive :** Interface moderne structurée avec Tailwind CSS / CSS Grid.
+BusDirect permet de consulter une liste de trajets, d'ouvrir la cabine d'un trajet et de gérer les réservations de ses 20 places. Les données viennent d'un fichier JSON, puis sont conservées dans le localStorage.
 
-## Technologies utilisées
+## Pages
 
-- **HTML5** (Structure sémantique)
-- **CSS3 / Tailwind CSS** (Stylisation & Responsive Design)
-- **JavaScript (ES6+)** (DOM Manipulation, Fetch API, Array Methods)
-- **Git & GitHub** (Gestion de versions & Branches)
-- **Vercel** (Déploiement en ligne)
+- **index.html** : liste des trajets avec statistiques du réseau, recherche par ville, filtre par statut (Tous, Disponible, Complet) et pagination de 6 trajets.
+- **cabine.html** : plan des 20 sièges d'un trajet, avec les formulaires Réserver, Modifier, Annuler et Liste d'attente.
 
-## Liens du projet
+## Fonctionnalités
 
-- **Déploiement Vercel (Live Demo) :** [Mon site en ligne](https://busdirect2-eta.vercel.app/)
-- **Dépôt GitHub :** [Code Source](https://github.com/MOHAMED408512/BusDirect2)
+- Statistiques du réseau : passagers, recette, trajets, personnes en attente
+- Recherche par ville et filtre Disponible / Complet
+- Pagination de 6 trajets par page
+- Plan de la cabine : 2 sièges, une allée, 2 sièges
+- Sièges VIP (1 à 4) avec un prix majoré de 10 %
+- Réservation avec validation du nom et du téléphone
+- Modification et annulation d'une réservation
+- Liste d'attente : le premier inscrit reçoit le siège libéré
+- Données conservées après actualisation (localStorage)
+
+## Organisation des modules
+
+Dossier `js/` :
+
+- `store.js` : lecture du JSON avec fetch, sauvegarde et chargement du localStorage
+- `reservations.js` : places libres, trajet complet, sièges VIP, prix d'un siège
+- `validators.js` : validation du nom et du téléphone
+- `render.js` : HTML d'une carte de trajet
+- `main-trajets.js` : logique de la page des trajets
+- `main-cabine.js` : logique de la page de la cabine
+
+Les données de départ sont dans `data/trips.json`.
+
+## Technologies
+
+HTML, JavaScript (modules), Tailwind CSS (CDN), localStorage.
