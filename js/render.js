@@ -1,7 +1,7 @@
 import { placesLibres , estComplet} from "./reservations.js"
 
 export function renderCard(trip) {
-    const { departure, destination, departureTime, arrivalTime, price, capacity, reservations , waitingList } = trip
+    const { id , departure, destination, departureTime, arrivalTime, price, capacity, reservations , waitingList } = trip
     const libres = placesLibres(trip)
     const complet = estComplet(trip)
 
@@ -28,7 +28,7 @@ export function renderCard(trip) {
         </div>
     <div class ="flex justify-between items-center pt-2 text-xs">
     <span> Recette : <b> ${recetteTotale} DH </b></span>
-    <button class = "bg-blue-600 text-white font-bold px-3 py-1 rounded-lg">Ouvrir</button>
+    <button data-id="${id}" class = "bg-blue-600 text-white font-bold px-3 py-1 rounded-lg">Ouvrir</button>
     </div>
     </div>
     ` }

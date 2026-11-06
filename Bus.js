@@ -278,7 +278,7 @@ btnSupprimer.addEventListener("click", function() {
 
     reservations = reservations.filter(r => r.siege !== siegeASupprimer);
 
-    sauvegarder();
+    sauvegarder();     
     actualiser();
 
 

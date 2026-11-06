@@ -1,4 +1,4 @@
- export const test = () => console.log("store OK");
+export const test = () => console.log("store OK");
 
 export async function tripsJSON() {
     try {
